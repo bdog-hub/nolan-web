@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner</title>
+    <style>
+        body {
+            background-image: url('https://png.pngtree.com/background/20230416/original/pngtree-website-dark-technology-line-background-picture-image_2443557.jpg');
+            background-size: 100% 40%; /* Cover the entire area */
+            background-repeat: no-repeat; /* Prevents image repeating */
+            background-position: top; /* Centers the image */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .colored-text {
+            color: white;
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green background */
+            border: none; /* Remove border */
+            color: white; /* White text */
+            padding: 15px 32px; /* Padding */
+            text-align: center; /* Centered text */
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Display inline */
+            font-size: 16px; /* Text size */
+            margin: 4px 2px; /* Margins */
+            cursor: pointer; /* Pointer/hand icon */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Ensure it stays on top of other content */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            flex: 1;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .content {
+            padding: 20px;
+            margin-top: 50px; /* Add margin to avoid content being hidden under the nav */
+        }
+
+        .planner-container {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto; /* Center the container */
+            margin-top: 100px; /* Add some space from the nav */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        textarea {
+            width: 100%;
+            height: 50px;
+            border: none;
+            resize: none;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body bgcolor=lightblue>
+    <nav>
+        <ul>
+            <li><a href="file:///C:/Users/Nolan%20Barvian/Desktop/nolan%20code/nolan%20code/nolan%20web/nolan%20web.html">Home</a></li>
+            <li><a href="file:///C:/Users/Nolan%20Barvian/Desktop/nolan%20code/nolan%20code/nolan%20web/Utilities.html">Utilities</a></li>
+            <li><a href="file:///C:/Users/Nolan%20Barvian/Desktop/nolan%20code/nolan%20code/nolan%20web/Games.html">Games</a></li>
+            <li><a href="file:///C:/Users/Nolan%20Barvian/Desktop/nolan%20code/nolan%20code/nolan%20web/news.html">News</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <center>
+            <h1 class="colored-text">Simple Planner</h1>
+            <br>
+            <div class="planner-container">
+                <h1>Weekly Planner</h1>
+                <table id="planner">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12am - 12pm</td>
+                            <td><textarea></textarea></td>
+                            <td><textarea></textarea></td>
+                            <td><textarea></textarea></td>
+                            <td><textarea></textarea></td>
+                            <td><textarea></textarea></td>
+                            <td><textarea></textarea></td>
+                            <td><textarea></textarea></td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                <button onclick="savePlanner()">Save Planner</button>
+            </div>
+        </center>
+    </div>
+
+    <script>
+        function savePlanner() {
+            const table = document.getElementById('planner');
+            const data = [];
+
+            for (let row of table.rows) {
+                const rowData = [];
+                for (let cell of row.cells) {
+                    if (cell.querySelector('textarea')) {
+                        rowData.push(cell.querySelector('textarea').value);
+                    }
+                }
+                if (rowData.length) {
+                    data.push(rowData);
+                }
+            }
+
+            localStorage.setItem('plannerData', JSON.stringify(data));
+            alert('Planner saved!');
+        }
+
+        function loadPlanner() {
+            const data = JSON.parse(localStorage.getItem('plannerData')) || [];
+            const table = document.getElementById('planner');
+
+            for (let i = 0; i < data.length; i++) {
+                const row = table.rows[i + 1]; // Skip header row
+                const rowData = data[i];
+                for (let j = 0; j < rowData.length; j++) {
+                    const cell = row.cells[j + 1]; // Skip time column
+                    cell.querySelector('textarea').value = rowData[j];
+                }
+            }
+        }
+
+        window.onload = loadPlanner;
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVO</title>
+    <style>
+        body {
+            background-image: url('https://png.pngtree.com/background/20230416/original/pngtree-website-dark-technology-line-background-picture-image_2443557.jpg');
+            background-size: 100% 25%; /* Cover the entire area */
+            background-repeat: no-repeat; /* Prevents image repeating */
+            background-position: top; /* Centers the image */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .colored-text {
+            color: white;
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green background */
+            border: none; /* Remove border */
+            color: white; /* White text */
+            padding: 15px 32px; /* Padding */
+            text-align: center; /* Centered text */
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Display inline */
+            font-size: 16px; /* Text size */
+            margin: 4px 2px; /* Margins */
+            cursor: pointer; /* Pointer/hand icon */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Ensure it stays on top of other content */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            flex: 1;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .content {
+            padding: 20px;
+            margin-top: 60px; /* Add margin to avoid content being hidden under the nav */
+            text-align: center;
+        }
+
+        .c-button {
+            min-width: 100%;
+            font-family: inherit;
+            appearance: none;
+            border: 0;
+            border-radius: 5px;
+            background: #ff9900;
+            color: #000;
+            padding: 0px 46px;
+            font-size: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .c-button:hover {
+            background: #ff8800;
+        }
+
+        .c-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px #cbd6ee;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 90vh; /* Set to 90% of the viewport height */
+        }
+    </style>
+</head>
+<body bgcolor="lightblue">
+    <nav>
+        <ul>
+            <li><a href="nolan%20web.html">Home</a></li>
+            <li><a href="Utilities.html">Utilities</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="news.html">News</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h1 class="colored-text">OVO</h1>
+        <br>
+<br>
+<br>
+<br>
+        <div id="fr" data="<iframe width='100%' height='95%' src='https://doc-opensocial.googleusercontent.com/gadgets/ifr?url=https://googleusercontent.b-cdn.net/ovo/ovo.xml&amp;container=ig' frameborder='0' allowfullscreen></iframe>">
+            <iframe src="https://doc-opensocial.googleusercontent.com/gadgets/ifr?url=https://googleusercontent.b-cdn.net/ovo/ovo.xml&amp;container=ig" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <button class="c-button" type="button" onclick="PlayTo(this)" style="display: none;">PLAY NOW</button>
+    </div>
+
+    <script>
+        function PlayTo(sel) {
+            var div = sel.previousElementSibling;
+            div.innerHTML = div.getAttribute('data');
+            sel.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
+
